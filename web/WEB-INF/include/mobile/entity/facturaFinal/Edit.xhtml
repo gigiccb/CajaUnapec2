@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="FacturaFinalEditPage" lazy="true">
+        <pm:header title="#{myBundle.EditFacturaFinalTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{myBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:FacturaFinalListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="FacturaFinalEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{facturaFinalController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{myBundle.EditFacturaFinalLabel_idFacturaFinal}" for="idFacturaFinal" />
+                            <h:outputText id="idFacturaFinal" value="#{facturaFinalController.selected.idFacturaFinal}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idCliente}" for="idCliente" />
+                            <p:selectOneMenu id="idCliente" value="#{facturaFinalController.selected.idCliente}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idCliente}" converter="clienteConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{clienteController.items}"
+                                               var="idClienteItem"
+                                               itemValue="#{idClienteItem}"
+                                               itemLabel="#{idClienteItem.idCliente.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idEmpleado}" for="idEmpleado" />
+                            <p:selectOneMenu id="idEmpleado" value="#{facturaFinalController.selected.idEmpleado}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idEmpleado}" converter="empleadoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{empleadoController.items}"
+                                               var="idEmpleadoItem"
+                                               itemValue="#{idEmpleadoItem}"
+                                               itemLabel="#{idEmpleadoItem.idEmpleado.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idFormaDePago}" for="idFormaDePago" />
+                            <p:selectOneMenu id="idFormaDePago" value="#{facturaFinalController.selected.idFormaDePago}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idFormaDePago}" converter="formaDePagoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{formaDePagoController.items}"
+                                               var="idFormaDePagoItem"
+                                               itemValue="#{idFormaDePagoItem}"
+                                               itemLabel="#{idFormaDePagoItem.descripcionFormaDePago.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idModPago}" for="idModPago" />
+                            <p:selectOneMenu id="idModPago" value="#{facturaFinalController.selected.idModPago}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idModPago}" converter="modPagoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{modPagoController.items}"
+                                               var="idModPagoItem"
+                                               itemValue="#{idModPagoItem}"
+                                               itemLabel="#{idModPagoItem.descripcionModPago.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idServFacturable}" for="idServFacturable" />
+                            <p:selectOneMenu id="idServFacturable" value="#{facturaFinalController.selected.idServFacturable}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idServFacturable}" converter="servFacturableConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{servFacturableController.items}"
+                                               var="idServFacturableItem"
+                                               itemValue="#{idServFacturableItem}"
+                                               itemLabel="#{idServFacturableItem.descripcionServFacturable.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{myBundle.EditFacturaFinalLabel_idDocumento}" for="idDocumento" />
+                            <p:selectOneMenu id="idDocumento" value="#{facturaFinalController.selected.idDocumento}" required="true" requiredMessage="#{myBundle.EditFacturaFinalRequiredMessage_idDocumento}" converter="tipoDocumentoConverter">
+                                <f:selectItem itemLabel="#{myBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{tipoDocumentoController.items}"
+                                               var="idDocumentoItem"
+                                               itemValue="#{idDocumentoItem}"
+                                               itemLabel="#{idDocumentoItem.descripcionDocumento.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{facturaFinalController.save}" value="#{myBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:FacturaFinalListPage:FacturaFinalListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:FacturaFinalListPage')}"/>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

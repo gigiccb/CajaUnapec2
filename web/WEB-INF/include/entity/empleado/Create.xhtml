@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="EmpleadoCreateDlg" widgetVar="EmpleadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateEmpleadoTitle}" closeOnEscape="true">
+
+            <h:form id="EmpleadoCreateForm">
+
+                <h:panelGroup id="display" rendered="#{empleadoController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_idEmpleado}" for="idEmpleado" />
+                        <p:inputText id="idEmpleado" value="#{empleadoController.selected.idEmpleado}" title="#{myBundle.CreateEmpleadoTitle_idEmpleado}" required="true" requiredMessage="#{myBundle.CreateEmpleadoRequiredMessage_idEmpleado}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_nombreEmpleado}" for="nombreEmpleado" />
+                        <p:inputText id="nombreEmpleado" value="#{empleadoController.selected.nombreEmpleado}" title="#{myBundle.CreateEmpleadoTitle_nombreEmpleado}" required="true" requiredMessage="#{myBundle.CreateEmpleadoRequiredMessage_nombreEmpleado}" size="40" maxlength="40"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_cedulaEmpleado}" for="cedulaEmpleado" />
+                        <p:inputText id="cedulaEmpleado" value="#{empleadoController.selected.cedulaEmpleado}" title="#{myBundle.CreateEmpleadoTitle_cedulaEmpleado}" required="true" requiredMessage="#{myBundle.CreateEmpleadoRequiredMessage_cedulaEmpleado}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_tandaEmpleado}" for="tandaEmpleado" />
+                        <p:selectOneMenu id="tandaEmpleado" value="#{empleadoController.selected.tandaEmpleado}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Diurna" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Nocturna" itemValue="Empleado"/>
+     
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_fechaIngresoEmpleado}" for="fechaIngresoEmpleado" />
+                        <p:calendar id="fechaIngresoEmpleado" pattern="MM/dd/yyyy" value="#{empleadoController.selected.fechaIngresoEmpleado}" title="#{myBundle.CreateEmpleadoTitle_fechaIngresoEmpleado}" required="true" requiredMessage="#{myBundle.CreateEmpleadoRequiredMessage_fechaIngresoEmpleado}" showOn="button"/>
+
+                        <p:outputLabel value="#{myBundle.CreateEmpleadoLabel_estadoEmpleado}" for="estadoEmpleado" />
+                        <p:selectOneMenu id="estadoEmpleado" value="#{empleadoController.selected.estadoEmpleado}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
+                    <f:selectItem itemLabel="Suspendido" itemValue="Profesor"/>
+                    
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{empleadoController.saveNew}" value="#{myBundle.Save}" update="display,:EmpleadoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EmpleadoCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('EmpleadoCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

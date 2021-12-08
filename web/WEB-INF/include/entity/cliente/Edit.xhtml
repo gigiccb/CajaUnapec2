@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ClienteEditDlg" widgetVar="ClienteEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{myBundle.EditClienteTitle}" closeOnEscape="true">
+
+            <h:form id="ClienteEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{clienteController.selected != null}">
+
+
+                        <h:outputLabel value="#{myBundle.EditClienteLabel_idCliente}" for="idCliente" />
+                        <h:outputText id="idCliente" value="#{clienteController.selected.idCliente}" />
+
+                        <p:outputLabel value="#{myBundle.EditClienteLabel_nombreCliente}" for="nombreCliente" />
+                        <p:inputText id="nombreCliente" value="#{clienteController.selected.nombreCliente}" title="#{myBundle.EditClienteTitle_nombreCliente}" required="true" requiredMessage="#{myBundle.EditClienteRequiredMessage_nombreCliente}" size="40" maxlength="40"/>
+
+                        <p:outputLabel value="#{myBundle.EditClienteLabel_tipoCliente}" for="tipoCliente" />
+                        <p:selectOneMenu id="tipoCliente" value="#{clienteController.selected.tipoCliente}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Estudiante" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Empleado" itemValue="Empleado"/>
+                    <f:selectItem itemLabel="Profesor" itemValue="Profesor"/>
+                    
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{myBundle.EditClienteLabel_carreraCliente}" for="carreraCliente" />
+                        <p:inputText id="carreraCliente" value="#{clienteController.selected.carreraCliente}" title="#{myBundle.EditClienteTitle_carreraCliente}" required="true" requiredMessage="#{myBundle.EditClienteRequiredMessage_carreraCliente}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{myBundle.EditClienteLabel_estadoCliente}" for="estadoCliente" />
+                        <p:selectOneMenu id="estadoCliente" value="#{clienteController.selected.estadoCliente}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
+                    <f:selectItem itemLabel="Suspendido" itemValue="Profesor"/>
+                    
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{myBundle.EditClienteLabel_balanceCliente}" for="balanceCliente" />
+                        <h:inputText id="balanceCliente" value="#{clienteController.selected.balanceCliente}" title="#{myBundle.EditClienteTitle_balanceCliente}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{clienteController.save}" value="#{myBundle.Save}" update="display,:ClienteListForm:datalist,:ClienteListForm:ClienteDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ClienteEditDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('ClienteEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

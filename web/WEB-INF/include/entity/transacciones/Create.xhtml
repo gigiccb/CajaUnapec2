@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TransaccionesCreateDlg" widgetVar="TransaccionesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{myBundle.CreateTransaccionesTitle}" closeOnEscape="true">
+
+            <h:form id="TransaccionesCreateForm">
+
+                <h:panelGroup id="display" rendered="#{transaccionesController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_idTransaccion}" for="idTransaccion" />
+                        <p:inputText id="idTransaccion" value="#{transaccionesController.selected.idTransaccion}" title="#{myBundle.CreateTransaccionesTitle_idTransaccion}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_idTransaccion}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_idCliente}" for="idCliente" />
+                        <p:inputText id="idCliente" value="#{transaccionesController.selected.idCliente}" title="#{myBundle.CreateTransaccionesTitle_idCliente}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_idCliente}"/>
+
+                        <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_tipoMovimiento}" for="tipoMovimiento" />
+                        <p:inputText id="tipoMovimiento" value="#{transaccionesController.selected.tipoMovimiento}" title="#{myBundle.CreateTransaccionesTitle_tipoMovimiento}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_tipoMovimiento}" size="2" maxlength="2"/>
+
+                        <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_montoTransaccion}" for="montoTransaccion" />
+                        <p:inputText id="montoTransaccion" value="#{transaccionesController.selected.montoTransaccion}" title="#{myBundle.CreateTransaccionesTitle_montoTransaccion}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_montoTransaccion}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{transaccionesController.saveNew}" value="#{myBundle.Save}" update="display,:TransaccionesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TransaccionesCreateDialog'));">
+                        <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{myBundle.Cancel}" oncomplete="PF('TransaccionesCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
