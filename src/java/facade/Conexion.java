@@ -18,7 +18,7 @@ public class Conexion {
 
     public Conexion() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 
-        Class.forName("org.apache.derby.jdbc.ClientDriver").newInstance();
+        Class.forName("org.apache.derby.jdbc.EmbeddedDriver").newInstance();
         conexion = DriverManager.getConnection("jdbc:derby://localhost:1527/CajadelUnapec?user=CAJADELUNAPEC&password=CAJADELUNAPEC");
         sentencia = conexion.createStatement();
     }

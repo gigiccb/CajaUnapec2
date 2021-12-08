@@ -205,13 +205,12 @@ public abstract class AbstractController<T> implements Serializable {
      * the data layer
      */
     public void saveNew(ActionEvent event) {
-        //System.out.println("Selected: " + this.selected.toString());
-        String datTrans[] = this.selected.toString().split(":");
+       String datTrans[] = this.selected.toString().split(":");
 
         try {
             Conexion con = new Conexion();
             String tipoMov = (datTrans[1].equals("DB"))?"+ ":"- "; 
-            String sql ="update clientes set balance = balance "+ tipoMov + Double.parseDouble(datTrans[2]) + " where idCliente = " + Integer.parseInt(datTrans[0]);
+            String sql ="update CLIENTE set BALANCE_CLIENTE = BALANCE_CLIENTE "+ tipoMov + Double.parseDouble(datTrans[2]) + " where ID_CLIENTE = " + Integer.parseInt(datTrans[0]);
             System.out.println(sql);
             con.ejecutarSentencia(sql);            
         } catch (Throwable e) {

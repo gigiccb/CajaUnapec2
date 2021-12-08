@@ -10,5 +10,5 @@
         <property name="URL" value="jdbc:derby://localhost:1527/CajadelUnapec"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
-    <jdbc-resource enabled="true" jndi-name="java:app/CajaUnapec2" object-type="user" pool-name="derby_net_CajadelUnapec_CAJADELUNAPECPool"/>
+    <jdbc-resource enabled="true" jndi-name="java:app/CajaDeUnapec" object-type="user" pool-name="derby_net_CajadelUnapec_CAJADELUNAPECPool"/>
 </resources>

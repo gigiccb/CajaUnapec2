@@ -42,8 +42,8 @@
                     
                         </p:selectOneMenu>
 
-                        <h:outputLabel value="#{myBundle.EditClienteLabel_balanceCliente}" for="balanceCliente" />
-                        <h:inputText id="balanceCliente" value="#{clienteController.selected.balanceCliente}" title="#{myBundle.EditClienteTitle_balanceCliente}"/>
+                        <p:outputLabel value="#{myBundle.EditClienteLabel_balanceCliente}" for="balanceCliente" />
+                        <p:inputText id="balanceCliente" value="#{clienteController.selected.balanceCliente}" title="#{myBundle.EditClienteTitle_balanceCliente}"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{clienteController.save}" value="#{myBundle.Save}" update="display,:ClienteListForm:datalist,:ClienteListForm:ClienteDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ClienteEditDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

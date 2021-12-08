@@ -2,6 +2,7 @@ package controller;
 
 import CajaUnapec2.Cliente;
 import CajaUnapec2.FacturaFinal;
+import CajaUnapec2.Transacciones;
 import java.util.Collection;
 import facade.ClienteFacade;
 import controller.util.MobilePageController;
@@ -19,6 +20,7 @@ public class ClienteController extends AbstractController<Cliente> {
 
     // Flags to indicate if child collections are empty
     private boolean isFacturaFinalCollectionEmpty;
+    private boolean isTransaccionesCollectionEmpty;
 
     public ClienteController() {
         // Inform the Abstract parent controller of the concrete Cliente Entity
@@ -31,6 +33,7 @@ public class ClienteController extends AbstractController<Cliente> {
     @Override
     protected void setChildrenEmptyFlags() {
         this.setIsFacturaFinalCollectionEmpty();
+        this.setIsTransaccionesCollectionEmpty();
     }
 
     public boolean getIsFacturaFinalCollectionEmpty() {
@@ -61,6 +64,36 @@ public class ClienteController extends AbstractController<Cliente> {
             FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("FacturaFinal_items", selectedFacturaFinalCollection);
         }
         return this.mobilePageController.getMobilePagesPrefix() + "/app/facturaFinal/index";
+    }
+
+    public boolean getIsTransaccionesCollectionEmpty() {
+        return this.isTransaccionesCollectionEmpty;
+    }
+
+    private void setIsTransaccionesCollectionEmpty() {
+        Cliente selected = this.getSelected();
+        if (selected != null) {
+            ClienteFacade ejbFacade = (ClienteFacade) this.getFacade();
+            this.isTransaccionesCollectionEmpty = ejbFacade.isTransaccionesCollectionEmpty(selected);
+        } else {
+            this.isTransaccionesCollectionEmpty = true;
+        }
+    }
+
+    /**
+     * Sets the "items" attribute with a collection of Transacciones entities
+     * that are retrieved from Cliente and returns the navigation outcome.
+     *
+     * @return navigation outcome for Transacciones page
+     */
+    public String navigateTransaccionesCollection() {
+        Cliente selected = this.getSelected();
+        if (selected != null) {
+            ClienteFacade ejbFacade = (ClienteFacade) this.getFacade();
+            Collection<Transacciones> selectedTransaccionesCollection = ejbFacade.findTransaccionesCollection(selected);
+            FacesContext.getCurrentInstance().getExternalContext().getRequestMap().put("Transacciones_items", selectedTransaccionesCollection);
+        }
+        return this.mobilePageController.getMobilePagesPrefix() + "/app/transacciones/index";
     }
 
 }

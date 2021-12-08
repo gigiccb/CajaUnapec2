@@ -64,10 +64,13 @@ public class Cliente implements Serializable {
     @Size(min = 1, max = 10)
     @Column(name = "ESTADO_CLIENTE")
     private String estadoCliente;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "BALANCE_CLIENTE")
     private Double balanceCliente;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
     private Collection<FacturaFinal> facturaFinalCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCliente")
+    private Collection<Transacciones> transaccionesCollection;
 
     public Cliente() {
     }
@@ -132,7 +135,6 @@ public class Cliente implements Serializable {
         this.balanceCliente = balanceCliente;
     }
 
-   
     @XmlTransient
     public Collection<FacturaFinal> getFacturaFinalCollection() {
         return facturaFinalCollection;
@@ -140,6 +142,15 @@ public class Cliente implements Serializable {
 
     public void setFacturaFinalCollection(Collection<FacturaFinal> facturaFinalCollection) {
         this.facturaFinalCollection = facturaFinalCollection;
+    }
+
+    @XmlTransient
+    public Collection<Transacciones> getTransaccionesCollection() {
+        return transaccionesCollection;
+    }
+
+    public void setTransaccionesCollection(Collection<Transacciones> transaccionesCollection) {
+        this.transaccionesCollection = transaccionesCollection;
     }
 
     @Override

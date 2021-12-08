@@ -16,6 +16,7 @@
                 <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('ClienteListForm:deleteButton').click();" icon="ui-icon-trash"/>
                 <p:separator/>
                 <p:menuitem value="#{myBundle.ClienteMenuItem_facturaFinalCollection}" icon="ui-icon-search"  action="#{clienteController.navigateFacturaFinalCollection}" disabled="#{clienteController.isFacturaFinalCollectionEmpty}" ajax="false"/>  
+                <p:menuitem value="#{myBundle.ClienteMenuItem_transaccionesCollection}" icon="ui-icon-search"  action="#{clienteController.navigateTransaccionesCollection}" disabled="#{clienteController.isTransaccionesCollectionEmpty}" ajax="false"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
                          value="#{clienteController.items}"

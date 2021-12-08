@@ -19,22 +19,10 @@
                         <h:outputText id="idFormaDePago" value="#{formaDePagoController.selected.idFormaDePago}" />
 
                         <p:outputLabel value="#{myBundle.EditFormaDePagoLabel_descripcionFormaDePago}" for="descripcionFormaDePago" />
-                        <p:selectOneMenu id="descripcionFormaDePago" value="#{formaDePagoController.selected.descripcionFormaDePago}">
-                        <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Al contado" itemValue="Estudiante"/>
-                    <f:selectItem itemLabel="A credito" itemValue="Empleado"/>
-                    <f:selectItem itemLabel="Plataforma de pagos" itemValue="Profesor"/>
-  		    <f:selectItem itemLabel="T-Pago" itemValue="Profesor"/>
-                    
-                        </p:selectOneMenu>
+                        <p:inputText id="descripcionFormaDePago" value="#{formaDePagoController.selected.descripcionFormaDePago}" title="#{myBundle.EditFormaDePagoTitle_descripcionFormaDePago}" required="true" requiredMessage="#{myBundle.EditFormaDePagoRequiredMessage_descripcionFormaDePago}" size="40" maxlength="40"/>
 
                         <p:outputLabel value="#{myBundle.EditFormaDePagoLabel_estadoFormaDePago}" for="estadoFormaDePago" />
-                        <p:selectOneMenu id="estadoFormaDePago" value="#{formaDePagoController.selected.estadoFormaDePago}">
-                        <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
-                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
-                    
-                        </p:selectOneMenu>
+                        <p:inputText id="estadoFormaDePago" value="#{formaDePagoController.selected.estadoFormaDePago}" title="#{myBundle.EditFormaDePagoTitle_estadoFormaDePago}" required="true" requiredMessage="#{myBundle.EditFormaDePagoRequiredMessage_estadoFormaDePago}" size="20" maxlength="20"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{formaDePagoController.save}" value="#{myBundle.Save}" update="display,:FormaDePagoListForm:datalist,:FormaDePagoListForm:FormaDePagoDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('FormaDePagoEditDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>

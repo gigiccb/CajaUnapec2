@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import CajaUnapec2.FacturaFinal;
+import CajaUnapec2.Transacciones;
 import java.util.Collection;
 
 /**
@@ -48,6 +49,21 @@ public class ClienteFacade extends AbstractFacade<Cliente> {
         Collection<FacturaFinal> facturaFinalCollection = mergedEntity.getFacturaFinalCollection();
         facturaFinalCollection.size();
         return facturaFinalCollection;
+    }
+
+    public boolean isTransaccionesCollectionEmpty(Cliente entity) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<Long> cq = cb.createQuery(Long.class);
+        Root<Cliente> cliente = cq.from(Cliente.class);
+        cq.select(cb.literal(1L)).distinct(true).where(cb.equal(cliente, entity), cb.isNotEmpty(cliente.get(Cliente_.transaccionesCollection)));
+        return em.createQuery(cq).getResultList().isEmpty();
+    }
+
+    public Collection<Transacciones> findTransaccionesCollection(Cliente entity) {
+        Cliente mergedEntity = this.getMergedEntity(entity);
+        Collection<Transacciones> transaccionesCollection = mergedEntity.getTransaccionesCollection();
+        transaccionesCollection.size();
+        return transaccionesCollection;
     }
     
 }

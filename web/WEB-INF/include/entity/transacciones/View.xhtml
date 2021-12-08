@@ -18,14 +18,14 @@
                         <h:outputText value="#{myBundle.ViewTransaccionesLabel_idTransaccion}"/>
                         <h:outputText value="#{transaccionesController.selected.idTransaccion}" title="#{myBundle.ViewTransaccionesTitle_idTransaccion}"/>
 
-                        <h:outputText value="#{myBundle.ViewTransaccionesLabel_idCliente}"/>
-                        <h:outputText value="#{transaccionesController.selected.idCliente}" title="#{myBundle.ViewTransaccionesTitle_idCliente}"/>
-
                         <h:outputText value="#{myBundle.ViewTransaccionesLabel_tipoMovimiento}"/>
                         <h:outputText value="#{transaccionesController.selected.tipoMovimiento}" title="#{myBundle.ViewTransaccionesTitle_tipoMovimiento}"/>
 
                         <h:outputText value="#{myBundle.ViewTransaccionesLabel_montoTransaccion}"/>
                         <h:outputText value="#{transaccionesController.selected.montoTransaccion}" title="#{myBundle.ViewTransaccionesTitle_montoTransaccion}"/>
+
+                        <h:outputText value="#{myBundle.ViewTransaccionesLabel_idCliente}"/>
+                        <h:outputText value="#{transaccionesController.selected.idCliente.idCliente}"/>
                     </p:panelGrid>
                     <p:commandButton value="#{myBundle.Close}" onclick="PF('TransaccionesViewDialog').hide()"/>
                 </h:panelGroup>

@@ -19,21 +19,10 @@
                         <p:inputText id="idModPago" value="#{modPagoController.selected.idModPago}" title="#{myBundle.CreateModPagoTitle_idModPago}" required="true" requiredMessage="#{myBundle.CreateModPagoRequiredMessage_idModPago}"/>
 
                         <p:outputLabel value="#{myBundle.CreateModPagoLabel_descripcionModPago}" for="descripcionModPago" />
-                        <p:selectOneMenu id="descripcionModPago" value="#{modPagoController.selected.descripcionModPago}">
-                        <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Total" itemValue="Estudiante"/>
-                    <f:selectItem itemLabel="Pago a 2 cuotas" itemValue="Empleado"/>
-                    <f:selectItem itemLabel="Pago a 4 cuotas" itemValue="Profesor"/>
-                    
-                        </p:selectOneMenu>
+                        <p:inputText id="descripcionModPago" value="#{modPagoController.selected.descripcionModPago}" title="#{myBundle.CreateModPagoTitle_descripcionModPago}" required="true" requiredMessage="#{myBundle.CreateModPagoRequiredMessage_descripcionModPago}" size="60" maxlength="60"/>
 
                         <p:outputLabel value="#{myBundle.CreateModPagoLabel_estadosModPago}" for="estadosModPago" />
-                        <p:selectOneMenu id="estadoModPago" value="#{modPagoController.selected.estadoModPago}">
-                        <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
-                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
-                   
-                        </p:selectOneMenu>
+                        <p:inputText id="estadosModPago" value="#{modPagoController.selected.estadosModPago}" title="#{myBundle.CreateModPagoTitle_estadosModPago}" size="20" maxlength="20"/>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{modPagoController.saveNew}" value="#{myBundle.Save}" update="display,:ModPagoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ModPagoCreateDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

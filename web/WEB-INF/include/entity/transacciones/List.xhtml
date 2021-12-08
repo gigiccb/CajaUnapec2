@@ -14,6 +14,8 @@
                 <p:menuitem value="#{myBundle.View}" onclick="document.getElementById('TransaccionesListForm:viewButton').click();" icon="ui-icon-search"/>
                 <p:menuitem value="#{myBundle.Edit}" onclick="document.getElementById('TransaccionesListForm:editButton').click();" icon="ui-icon-pencil"/>
                 <p:menuitem value="#{myBundle.Delete}" onclick="document.getElementById('TransaccionesListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{myBundle.TransaccionesMenuItem_idCliente}" icon="ui-icon-search"  actionListener="#{transaccionesController.prepareIdCliente}" update=":ClienteViewForm" oncomplete="PF('ClienteViewDialog').show()" disabled="#{empty transaccionesController.selected.idCliente}"/>  
             </p:contextMenu>
             <p:dataTable id="datalist"
                          value="#{transaccionesController.items}"
@@ -36,9 +38,9 @@
                 -->
 
 
-                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TransaccionesDataTableContextMenu"/>
-                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TransaccionesDataTableContextMenu"/>
-                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TransaccionesDataTableContextMenu" listener="#{transaccionesController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:TransaccionesDataTableContextMenu" listener="#{transaccionesController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{transaccionesController.resetParents}"/>
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('TransaccionesListForm:viewButton').click();"/>
 
                 <p:column sortBy="#{item.idTransaccion}" filterBy="#{item.idTransaccion}">
@@ -46,14 +48,6 @@
                         <h:outputText value="#{myBundle.ListTransaccionesTitle_idTransaccion}"/>
                     </f:facet>
                     <h:outputText value="#{item.idTransaccion}"/>
-                </p:column>
-
-
-                <p:column sortBy="#{item.idCliente}" filterBy="#{item.idCliente}">
-                    <f:facet name="header">
-                        <h:outputText value="#{myBundle.ListTransaccionesTitle_idCliente}"/>
-                    </f:facet>
-                    <h:outputText value="#{item.idCliente}"/>
                 </p:column>
 
 
@@ -70,6 +64,14 @@
                         <h:outputText value="#{myBundle.ListTransaccionesTitle_montoTransaccion}"/>
                     </f:facet>
                     <h:outputText value="#{item.montoTransaccion}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.idCliente.idCliente}" filterBy="#{item.idCliente.idCliente}">
+                    <f:facet name="header">
+                        <h:outputText value="#{myBundle.ListTransaccionesTitle_idCliente}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idCliente.idCliente}"/>
                 </p:column>
 
 

@@ -44,17 +44,17 @@
 
 
                             ,&nbsp;
-                            <h:outputText value="#{item.idCliente}"/>
-
-
-
-                            ,&nbsp;
                             <h:outputText value="#{item.tipoMovimiento}"/>
 
 
 
                             ,&nbsp;
                             <h:outputText value="#{item.montoTransaccion}"/>
+
+
+
+                            ,&nbsp;
+                            <h:outputText value="#{item.idCliente.idCliente}"/>
 
                         </p>
                         <f:setPropertyActionListener value="#{item}" target="#{transaccionesController.selected}" />

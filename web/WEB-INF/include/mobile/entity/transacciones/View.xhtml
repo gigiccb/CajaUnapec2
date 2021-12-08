@@ -27,11 +27,6 @@
                         </pm:field>
 
                         <pm:field>
-                            <h:outputText value="#{myBundle.ViewTransaccionesLabel_idCliente}"/>
-                            <h:outputText value="#{transaccionesController.selected.idCliente}" title="#{myBundle.ViewTransaccionesTitle_idCliente}"/>
-                        </pm:field>
-
-                        <pm:field>
                             <h:outputText value="#{myBundle.ViewTransaccionesLabel_tipoMovimiento}"/>
                             <h:outputText value="#{transaccionesController.selected.tipoMovimiento}" title="#{myBundle.ViewTransaccionesTitle_tipoMovimiento}"/>
                         </pm:field>
@@ -39,6 +34,11 @@
                         <pm:field>
                             <h:outputText value="#{myBundle.ViewTransaccionesLabel_montoTransaccion}"/>
                             <h:outputText value="#{transaccionesController.selected.montoTransaccion}" title="#{myBundle.ViewTransaccionesTitle_montoTransaccion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{myBundle.ViewTransaccionesLabel_idCliente}"/>
+                            <h:outputText value="#{transaccionesController.selected.idCliente.idCliente}"/>
                         </pm:field>
                     </p:outputPanel>
                 </h:panelGroup>
