@@ -120,7 +120,7 @@ public class Transacciones implements Serializable {
     @Override
     public String toString() {
         //return "com.jp.entity.Transacciones[ idTransaccion=" + idTransaccion + " ]";
-        return idCliente + ":"  + tipoMovimiento +  ":" + montoTransaccion;
+        return idCliente.getIdCliente() + ":"  + tipoMovimiento +  ":" + montoTransaccion;
     }
     
 }

@@ -207,14 +207,20 @@ public abstract class AbstractController<T> implements Serializable {
     public void saveNew(ActionEvent event) {
        String datTrans[] = this.selected.toString().split(":");
 
+       String sql= "";
         try {
-            Conexion con = new Conexion();
+            //Conexion con = new Conexion();
+            
+            Conexion.getConexion();
+            System.out.println("Hola");
             String tipoMov = (datTrans[1].equals("DB"))?"+ ":"- "; 
-            String sql ="update CLIENTE set BALANCE_CLIENTE = BALANCE_CLIENTE "+ tipoMov + Double.parseDouble(datTrans[2]) + " where ID_CLIENTE = " + Integer.parseInt(datTrans[0]);
+           System.out.println("Adios"+tipoMov);
+            sql ="update CLIENTE set BALANCE_CLIENTE = BALANCE_CLIENTE "+ tipoMov + Double.parseDouble(datTrans[2]) + " where ID_CLIENTE = " + datTrans[0];
             System.out.println(sql);
-            con.ejecutarSentencia(sql);            
+            Conexion.ejecutarSentencia(sql);            
         } catch (Throwable e) {
-            System.out.println("Ha fallado la consulta de datos");
+            System.out.println(sql);
+            System.out.println("Ha fallado la consulta de datos"+e.getMessage());
             e.printStackTrace();
         }
 
