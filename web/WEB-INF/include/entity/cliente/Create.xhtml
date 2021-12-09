@@ -31,14 +31,23 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.CreateClienteLabel_carreraCliente}" for="carreraCliente" />
-                        <p:inputText id="carreraCliente" value="#{clienteController.selected.carreraCliente}" title="#{myBundle.CreateClienteTitle_carreraCliente}" required="true" requiredMessage="#{myBundle.CreateClienteRequiredMessage_carreraCliente}" size="30" maxlength="30"/>
+                        <p:selectOneMenu id="carreraCliente" value="#{clienteController.selected.carreraCliente}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Administracion" itemValue="Administración"/>
+                    <f:selectItem itemLabel="Publicidad" itemValue="publicidad"/>
+                    <f:selectItem itemLabel="Marketing" itemValue="Marketing"/>
+                    <f:selectItem itemLabel="Comunicacion Digital" itemValue="Comunicacion digital"/>
+                    <f:selectItem itemLabel="Ingeniería de Software" itemValue="Ingeniería de Software"/>
+                    <f:selectItem itemLabel="Ingeniería Electronica" itemValue="Ingeniería Elentronica"/>
+                    
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.CreateClienteLabel_estadoCliente}" for="estadoCliente" />
                         <p:selectOneMenu id="estadoCliente" value="#{clienteController.selected.estadoCliente}">
                         <f:selectItem itemLabel="Select One" itemValue=""/>
-                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
-                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
-                    <f:selectItem itemLabel="Suspendido" itemValue="Profesor"/>
+                    <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="Inactivo"/>
+                    <f:selectItem itemLabel="Suspendido" itemValue="Suspendido"/>
                     
                         </p:selectOneMenu>
 

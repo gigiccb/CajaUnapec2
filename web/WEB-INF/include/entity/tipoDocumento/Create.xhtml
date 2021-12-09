@@ -19,10 +19,23 @@
                         <p:inputText id="idDocumento" value="#{tipoDocumentoController.selected.idDocumento}" title="#{myBundle.CreateTipoDocumentoTitle_idDocumento}" required="true" requiredMessage="#{myBundle.CreateTipoDocumentoRequiredMessage_idDocumento}"/>
 
                         <p:outputLabel value="#{myBundle.CreateTipoDocumentoLabel_descripcionDocumento}" for="descripcionDocumento" />
-                        <p:inputText id="descripcionDocumento" value="#{tipoDocumentoController.selected.descripcionDocumento}" title="#{myBundle.CreateTipoDocumentoTitle_descripcionDocumento}" required="true" requiredMessage="#{myBundle.CreateTipoDocumentoRequiredMessage_descripcionDocumento}" size="60" maxlength="60"/>
+                        <p:selectOneMenu id="descripcionDocumento" value="#{tipoDocumentoController.selected.descripcionDocumento}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Nota de credito" itemValue="Nota de credito"/>
+                    <f:selectItem itemLabel="Nota de debito" itemValue="Nota de debito"/>
+                    <f:selectItem itemLabel="Recibo de ingreso" itemValue="Recibo de ingreso"/>
+                    
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.CreateTipoDocumentoLabel_estadoDocumento}" for="estadoDocumento" />
-                        <p:inputText id="estadoDocumento" value="#{tipoDocumentoController.selected.estadoDocumento}" title="#{myBundle.CreateTipoDocumentoTitle_estadoDocumento}" required="true" requiredMessage="#{myBundle.CreateTipoDocumentoRequiredMessage_estadoDocumento}" size="20" maxlength="20"/>
+                        <p:selectOneMenu id="estadoDocumento" value="#{tipoDocumentoController.selected.estadoDocumento}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Expedido" itemValue="Expedido"/>
+                    <f:selectItem itemLabel="Pendiente expedición" itemValue="Pendiente expedición"/>
+                    <f:selectItem itemLabel="Cancelado" itemValue="Cancelado"/>
+                    
+                        </p:selectOneMenu>
+
                     </p:panelGrid>
                     <p:commandButton actionListener="#{tipoDocumentoController.saveNew}" value="#{myBundle.Save}" update="display,:TipoDocumentoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('TipoDocumentoCreateDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

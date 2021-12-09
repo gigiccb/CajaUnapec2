@@ -19,10 +19,24 @@
                         <p:inputText id="idServFacturable" value="#{servFacturableController.selected.idServFacturable}" title="#{myBundle.CreateServFacturableTitle_idServFacturable}" required="true" requiredMessage="#{myBundle.CreateServFacturableRequiredMessage_idServFacturable}"/>
 
                         <p:outputLabel value="#{myBundle.CreateServFacturableLabel_descripcionServFacturable}" for="descripcionServFacturable" />
-                        <p:inputText id="descripcionServFacturable" value="#{servFacturableController.selected.descripcionServFacturable}" title="#{myBundle.CreateServFacturableTitle_descripcionServFacturable}" required="true" requiredMessage="#{myBundle.CreateServFacturableRequiredMessage_descripcionServFacturable}" size="60" maxlength="60"/>
+                        <p:selectOneMenu id="estadoCliente" value="#{clienteController.selected.estadoCliente}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Colegiatura Grado" itemValue="Colegiatura Grado"/>
+                    <f:selectItem itemLabel="Colegiatura Posgrado" itemValue="Colegiatura Posgrado"/>
+                    <f:selectItem itemLabel="Reingreso" itemValue="Reingreso"/>
+                    <f:selectItem itemLabel="Idiomas" itemValue="Idiomas"/>
+                    <f:selectItem itemLabel="Eduación continuado" itemValue="Eduación continuado"/>
+                   
+                    
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.CreateServFacturableLabel_estadoServFacturables}" for="estadoServFacturables" />
-                        <p:inputText id="estadoServFacturables" value="#{servFacturableController.selected.estadoServFacturables}" title="#{myBundle.CreateServFacturableTitle_estadoServFacturables}" size="20" maxlength="20"/>
+                        <p:selectOneMenu id="estadoServFacturables" value="#{formaDePagoController.selected.estadoServFacturables}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="Inactivo"/>
+                    
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{servFacturableController.saveNew}" value="#{myBundle.Save}" update="display,:ServFacturableListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ServFacturableCreateDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>

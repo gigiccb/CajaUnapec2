@@ -19,7 +19,12 @@
                         <p:inputText id="idTransaccion" value="#{transaccionesController.selected.idTransaccion}" title="#{myBundle.CreateTransaccionesTitle_idTransaccion}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_idTransaccion}"/>
 
                         <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_tipoMovimiento}" for="tipoMovimiento" />
-                        <p:inputText id="tipoMovimiento" value="#{transaccionesController.selected.tipoMovimiento}" title="#{myBundle.CreateTransaccionesTitle_tipoMovimiento}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_tipoMovimiento}" size="2" maxlength="2"/>
+                        <p:selectOneMenu id="tipoMovimiento" value="#{modPagoController.selected.tipoMovimiento}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="DB" itemValue="DB"/>
+                    <f:selectItem itemLabel="CT" itemValue="CT"/>
+                   
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.CreateTransaccionesLabel_montoTransaccion}" for="montoTransaccion" />
                         <p:inputText id="montoTransaccion" value="#{transaccionesController.selected.montoTransaccion}" title="#{myBundle.CreateTransaccionesTitle_montoTransaccion}" required="true" requiredMessage="#{myBundle.CreateTransaccionesRequiredMessage_montoTransaccion}"/>

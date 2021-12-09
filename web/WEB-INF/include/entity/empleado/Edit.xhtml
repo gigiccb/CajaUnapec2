@@ -25,13 +25,24 @@
                         <p:inputText id="cedulaEmpleado" value="#{empleadoController.selected.cedulaEmpleado}" title="#{myBundle.EditEmpleadoTitle_cedulaEmpleado}" required="true" requiredMessage="#{myBundle.EditEmpleadoRequiredMessage_cedulaEmpleado}"/>
 
                         <p:outputLabel value="#{myBundle.EditEmpleadoLabel_tandaEmpleado}" for="tandaEmpleado" />
-                        <p:inputText id="tandaEmpleado" value="#{empleadoController.selected.tandaEmpleado}" title="#{myBundle.EditEmpleadoTitle_tandaEmpleado}" required="true" requiredMessage="#{myBundle.EditEmpleadoRequiredMessage_tandaEmpleado}" size="20" maxlength="20"/>
+                        <p:selectOneMenu id="tandaEmpleado" value="#{empleadoController.selected.tandaEmpleado}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Diurna" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Nocturna" itemValue="Empleado"/>
+     
+                        </p:selectOneMenu>
 
                         <p:outputLabel value="#{myBundle.EditEmpleadoLabel_fechaIngresoEmpleado}" for="fechaIngresoEmpleado" />
                         <p:calendar id="fechaIngresoEmpleado" pattern="MM/dd/yyyy" value="#{empleadoController.selected.fechaIngresoEmpleado}" title="#{myBundle.EditEmpleadoTitle_fechaIngresoEmpleado}" required="true" requiredMessage="#{myBundle.EditEmpleadoRequiredMessage_fechaIngresoEmpleado}" showOn="button"/>
 
                         <p:outputLabel value="#{myBundle.EditEmpleadoLabel_estadoEmpleado}" for="estadoEmpleado" />
-                        <p:inputText id="estadoEmpleado" value="#{empleadoController.selected.estadoEmpleado}" title="#{myBundle.EditEmpleadoTitle_estadoEmpleado}" required="true" requiredMessage="#{myBundle.EditEmpleadoRequiredMessage_estadoEmpleado}" size="20" maxlength="20"/>
+                        <p:selectOneMenu id="estadoEmpleado" value="#{empleadoController.selected.estadoEmpleado}">
+                        <f:selectItem itemLabel="Select One" itemValue=""/>
+                    <f:selectItem itemLabel="Activo" itemValue="Estudiante"/>
+                    <f:selectItem itemLabel="Inactivo" itemValue="Empleado"/>
+                    <f:selectItem itemLabel="Suspendido" itemValue="Profesor"/>
+                    
+                        </p:selectOneMenu>
                     </p:panelGrid>
                     <p:commandButton actionListener="#{empleadoController.save}" value="#{myBundle.Save}" update="display,:EmpleadoListForm:datalist,:EmpleadoListForm:EmpleadoDataTableContextMenu,:growl" oncomplete="handleSubmit(xhr,status,args,PF('EmpleadoEditDialog'));">
                         <p:confirm header="#{myBundle.ConfirmationHeader}" message="#{myBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
